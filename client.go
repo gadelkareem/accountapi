@@ -55,7 +55,7 @@ func (c *client) delete(resourcePath string) (*http.Response, error) {
 func (c *client) retryRequest(method, resourcePath string, body io.Reader) (resp *http.Response, err error) {
 	backoff.Retry(func() error {
 		resp, err = c.request(method, resourcePath, body)
-		if resp.StatusCode >= http.StatusTooManyRequests {
+		if resp != nil && resp.StatusCode >= http.StatusTooManyRequests {
 			return errors.New("try again")
 		}
 		return nil
