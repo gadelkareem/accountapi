@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/cenkalti/backoff"
-	"github.com/google/jsonapi"
 	"io"
 	"net/http"
 	"net/url"
@@ -90,11 +89,13 @@ func (c *client) request(method, resourcePath string, body io.Reader) (*http.Res
 func formatError(r *http.Response) error {
 	defer r.Body.Close()
 
-	pl := new(jsonapi.ErrorsPayload)
+	pl := &struct {
+		ErrorMessage string `json:"error_message"`
+	}{}
 	if err := json.NewDecoder(r.Body).Decode(pl); err != nil {
 		fmt.Fprintf(os.Stderr, err.Error())
-	} else if len(pl.Errors) > 0 {
-		return errors.New(pl.Errors[0].Error())
+	} else if pl.ErrorMessage != "" {
+		return errors.New(pl.ErrorMessage)
 	}
 
 	return fmt.Errorf("error status code %d: %s", r.StatusCode, http.StatusText(r.StatusCode))
