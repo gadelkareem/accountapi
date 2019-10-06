@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "type": "accounts",
+      "id": "ad27e265-9605-4b4b-a0e5-3003ea9cc4dc",
+      "organisation_id": "eb0bd6f5-c3f5-44b2-b677-acd23cdde73c",
+      "version": 0,
+      "attributes": {
+        "account_number": "41426819",
+        "bank_id": "400300",
+        "bank_id_code": "GBDSC"
+      }
+    },
+    {
+      "type": "accounts",
+      "id": "ea6239c1-99e9-42b3-bca1-92f5c068da6b",
+      "organisation_id": "eb0bd6f5-c3f5-44b2-b677-acd23cdde73c",
+      "version": 0,
+      "attributes": {
+        "account_number": "51426819",
+        "bank_id": "200200",
+        "bank_id_code": "GBDSC"
+      }
+    }
+  ]
+}
