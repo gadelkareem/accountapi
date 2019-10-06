@@ -2,6 +2,7 @@ package accountapi
 
 type Account struct {
 	ID                          string   `jsonapi:"primary,accounts"`
+	OrganisationId              string   `jsonapi:"attr,organisation_id"`
 	Country                     string   `jsonapi:"attr,country"`
 	BaseCurrency                string   `jsonapi:"attr,base_currency"`
 	AccountNumber               string   `jsonapi:"attr,account_number"`
