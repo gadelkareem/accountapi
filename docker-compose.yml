@@ -47,6 +47,7 @@ services:
       context: .
       dockerfile: dockerfile
     depends_on:
-      - postgresql
-      - vault
       - accountapi
+    environment:
+      WAIT_HOSTS: accountapi:8080
+    command: sh -c "/wait &&  "
